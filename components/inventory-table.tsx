@@ -133,7 +133,7 @@ export function InventoryTable() {
                 <TableCell>
                   <Badge
                     variant={
-                      item.status === "En stock" ? "default" : item.status === "Bajo stock" ? "secondary" : "destructive"
+                      item.status === "En stock" ? "default" : item.status === "Bajo stock" ? "secondary" : "default"
                     }
                   >
                     {item.status}
