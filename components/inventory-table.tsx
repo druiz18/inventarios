@@ -131,10 +131,7 @@ export function InventoryTable() {
                 <TableCell className="text-right">${item.price.toFixed(2)}</TableCell>
                 <TableCell>{item.location}</TableCell>
                 <TableCell>
-                  <Badge
-                    variant={
-                      item.status === "En stock" ? "default" : item.status === "Bajo stock" ? "secondary" : "default"
-                    }
+                  <Badge className={item.status === "Bajo stock" ? "bg-yellow-500 text-white" : ""}
                   >
                     {item.status}
                   </Badge>

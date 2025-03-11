@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { MoreHorizontal, PlusCircle } from "lucide-react"
+import * as React from "react";
+import { MoreHorizontal, PlusCircle } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,10 +11,17 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Badge } from "@/components/ui/badge"
+} from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Badge } from "@/components/ui/badge";
 
 // Datos de ejemplo para el inventario
 const inventoryData = [
@@ -81,17 +88,17 @@ const inventoryData = [
     location: "Almacén C",
     status: "En stock",
   },
-]
+];
 
 export function InventoryTable() {
-  const [searchTerm, setSearchTerm] = React.useState("")
+  const [searchTerm, setSearchTerm] = React.useState("");
 
   const filteredData = inventoryData.filter(
     (item) =>
       item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.category.toLowerCase().includes(searchTerm.toLowerCase()),
-  )
+      item.category.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="space-y-4">
@@ -128,12 +135,16 @@ export function InventoryTable() {
                 <TableCell>{item.name}</TableCell>
                 <TableCell>{item.category}</TableCell>
                 <TableCell className="text-center">{item.stock}</TableCell>
-                <TableCell className="text-right">${item.price.toFixed(2)}</TableCell>
+                <TableCell className="text-right">
+                  ${item.price.toFixed(2)}
+                </TableCell>
                 <TableCell>{item.location}</TableCell>
                 <TableCell>
                   <Badge
-                    variant={
-                      item.status === "En stock" ? "default" : item.status === "Bajo stock" ? "warning" : "destructive"
+                    className={
+                      item.status === "Bajo stock"
+                        ? "bg-yellow-500 text-white"
+                        : ""
                     }
                   >
                     {item.status}
@@ -155,7 +166,9 @@ export function InventoryTable() {
                       <DropdownMenuItem>Ajustar stock</DropdownMenuItem>
                       <DropdownMenuItem>Mover ubicación</DropdownMenuItem>
                       <DropdownMenuSeparator />
-                      <DropdownMenuItem className="text-destructive">Eliminar producto</DropdownMenuItem>
+                      <DropdownMenuItem className="text-destructive">
+                        Eliminar producto
+                      </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </TableCell>
@@ -165,6 +178,5 @@ export function InventoryTable() {
         </Table>
       </div>
     </div>
-  )
+  );
 }
-
